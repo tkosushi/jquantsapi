@@ -21,8 +21,6 @@ class API(object):
             r = requests.post(url, data=params, headers=self.headers)
         response = r.json()
 
-        print(r.url)
-
         if isinstance(response, dict) and r.status_code != 200:
             raise APIError(response, r.status_code)
 
