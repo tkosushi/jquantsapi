@@ -1,8 +1,15 @@
 ## jquantsapi
   
 公式ドキュメント：https://jpx.gitbook.io/j-quants-api/  
+
+### 必要なパッケージ
+requestsをインストールしてください。  
   
-サンプル：  
+```
+pip install requests
+```
+
+### サンプル
   
 ```
 import jquantsapi
@@ -20,8 +27,3 @@ response = api.get_fins_statements('86970')
 response = api.get_fins_announcement()
 ```
   
-requestsをインストールしてください。  
-  
-```
-pip install requests
-```
