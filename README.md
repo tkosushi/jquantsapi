@@ -15,7 +15,7 @@ pip install requests
 import jquantsapi
 
 token = 'YOUR TOKEN'
-api = jquantsapi(token)
+api = jquantsapi.API(token)
 
 # 銘柄情報照会
 response = api.get_listed_info()
