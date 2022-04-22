@@ -21,13 +21,14 @@ class API(object):
             r = requests.post(url, data=params, headers=self.headers)
         response = r.json()
 
-        if isinstance(response, dict) and r.status_code != 200:
-            raise APIError(response, r.status_code)
-
         return response
 
     def get_listed_info(self):
         url = '/listed/info'
+        return self._call(url, 'get')
+
+    def get_listed_sections(self):
+        url = '/listed/sections'
         return self._call(url, 'get')
 
     def get_daily_quotes(self, code: str):

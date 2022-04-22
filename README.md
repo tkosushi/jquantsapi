@@ -19,6 +19,8 @@ api = jquantsapi.API(token)
 
 # 銘柄情報照会
 response = api.get_listed_info()
+# 業種情報照会
+response = api.get_listed_sections()
 # 日次の株価情報
 response = api.get_daily_quotes('86970')
 # 四半期の財務情報
