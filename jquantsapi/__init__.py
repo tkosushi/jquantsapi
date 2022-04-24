@@ -26,7 +26,7 @@ class API(object):
 
         return response
 
-    def get_listed_info(self, code):
+    def get_listed_info(self, code:str = None):
         params = {'code': code}
         url = '/listed/info'
         return self._call(url, 'get', **params)
