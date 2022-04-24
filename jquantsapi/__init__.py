@@ -21,23 +21,30 @@ class API(object):
             r = requests.post(url, data=params, headers=self.headers)
         response = r.json()
 
+        if r.status_code != 200:
+            raise APIError(response['message'])
+
         return response
 
-    def get_listed_info(self):
+    def get_listed_info(self, code):
+        params = {'code': code}
         url = '/listed/info'
-        return self._call(url, 'get')
+        return self._call(url, 'get', **params)
 
     def get_listed_sections(self):
         url = '/listed/sections'
         return self._call(url, 'get')
 
-    def get_daily_quotes(self, code: str):
-        params = {'code': code}
+    def get_daily_quotes(
+            self, code:str = None, from_d:str = None,
+            to_d:str = None, date:str = None
+        ):
+        params = {'code': code, 'from': from_d, 'to': to_d, 'date': date}
         url = '/prices/daily_quotes'
         return self._call(url, 'get', **params)
 
-    def get_fins_statements(self, code: str):
-        params = {'code': code}
+    def get_fins_statements(self, code:str = None, date:str = None):
+        params = {'code': code, 'date': date}
         url = '/fins/statements'
         return self._call(url, 'get', **params)
 
